@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+//添加
+apply plugin: 'com.novoda.bintray-release'
+
+//添加
+publish {
+    userOrg = 'mb2018'//bintray用户名
+    repoName = 'mb'//要传到的maven的名字。你可能有多个maven，要传哪个写哪个。
+    groupId = 'com.mb'//jcenter上的路径
+    artifactId = 'utils'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'common utils'//描述，不重要
+    website = 'https://github.com'//网站，不重要；尽量模拟github上的地址
+}
+
+ext {
+    SUPPORT_LIBRARY_VERSION = '27.1.1'
+}
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${SUPPORT_LIBRARY_VERSION}"
+    implementation 'com.google.code.gson:gson:2.8.2'
+}
+
+
+
