@@ -1,17 +1,4 @@
 apply plugin: 'com.android.library'
-//添加
-apply plugin: 'com.novoda.bintray-release'
-
-//添加
-publish {
-    userOrg = 'mb2018'//bintray用户名
-    repoName = 'mb'//要传到的maven的名字。你可能有多个maven，要传哪个写哪个。
-    groupId = 'com.mb'//jcenter上的路径
-    artifactId = 'utils'//项目名称
-    publishVersion = '1.0.0'//版本号
-    desc = 'common utils'//描述，不重要
-    website = 'https://github.com'//网站，不重要；尽量模拟github上的地址
-}
 
 ext {
     SUPPORT_LIBRARY_VERSION = '27.1.1'
@@ -41,4 +28,6 @@ dependencies {
 }
 
 
-
+if (file('jcenter.gradle').exists()) {
+    apply from: file('jcenter.gradle')
+}
